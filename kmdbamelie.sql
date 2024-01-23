@@ -53,7 +53,24 @@ INSERT INTO actors (
     ("Joseph Gordon-Levitt", 9), 
     ("Anne Hathaway", 10); 
 
---need to take into account character
+INSERT INTO characters (
+    name_character, movies_id
+) VALUES
+    ("Bruce Wayne", 1),
+    ("Bruce Wayne", 2),
+    ("Bruce Wayne", 3),
+    ("Alfred", 1),
+    ("Alfred", 2),  
+    ("Ra's Al Ghul", 1),
+    ("Rachel Dawes", 1),
+    ("Commissioner Gordon", 1),
+    ("Commissioner Gordon", 3),
+    ("Joker", 2),
+    ("Harvey Dent", 2), 
+    ("Bane", 3), 
+    ("John Blake", 3), 
+    ("Selina Kyle", 3), 
+
 INSERT INTO movies (
     studios_id,
     movie_title,
@@ -66,19 +83,18 @@ INSERT INTO movies (
     (1, "The Dark Knight Rises", "2012", "PG-13");
 
 
--- SELECT STATEMENTS TO PROVIDE ADEQUATE OUTPUT
--- Movie list output --> anything else needed to have studios_name printed, 
--- or the studio_id reads automatically??
-
 SELECT movie_title, year_released, MPAA_rating, studios_name
 FROM movies 
 INNER JOIN studios ON studios_id = movies.studio_id 
 GROUP BY year_released 
 ORDER BY year_released; 
 
---SELECT movies.movie_title, actors.name_actor, actors.character
---FROM actors INNER JOIN character ON movies.character = actors.character
---GROUP BY movie_title;   
+
+SELECT movies.movie_title, actors.name_actor, actors.character
+FROM actors 
+INNER JOIN character ON movies.character = actors.character
+INNER JOIN 
+GROUP BY movie_title;   
 
 
 
