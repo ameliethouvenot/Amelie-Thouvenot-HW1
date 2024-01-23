@@ -73,30 +73,41 @@ INSERT INTO actors (
     characters_id
 ) VALUES 
     ("Christian Bale", 1),
+    ("Christian Bale", 2),
+    ("Christian Bale", 3),
     ("Michael Caine", 4), 
+    ("Michael Caine", 5), 
     ("Liam Neeson", 6), 
     ("Katie Holmes", 7),
-    ("Gary Oldman", 8),
-    ("Heath Ledger", 10), 
-    ("Aaron Eckhart", 11), 
-    ("Maggie Gyllenhaal", 7),
-    ("Tom Hardy", 12), 
-    ("Joseph Gordon-Levitt", 13), 
-    ("Anne Hathaway", 14); 
+    ("Maggie Gyllenhaal", 8),
+    ("Gary Oldman", 9),
+    ("Gary Oldman", 10),
+    ("Heath Ledger", 11), 
+    ("Aaron Eckhart", 12), 
+    ("Tom Hardy", 13), 
+    ("Joseph Gordon-Levitt", 14), 
+    ("Anne Hathaway", 15); 
 
-
-
+.print ""
+.print "Movies"
+.print "======"
+.print ""
 SELECT movie_title, year_released, MPAA_rating, name_studios
 FROM movies 
 INNER JOIN studios ON studios_id = movies.studios_id 
 GROUP BY year_released 
 ORDER BY year_released; 
 
-SELECT movies.movie_title,  characters.name_character
+.print ""
+.print "Top Cast"
+.print "========"
+.print ""
+SELECT movies.movie_title,  actors.name_actor, characters.name_character
 FROM characters 
 INNER JOIN movies ON movies.id = characters.movies_id
---INNER JOIN actors ON actors.characters_id = characters_id;   
+INNER JOIN actors ON actors.characters_id = characters.id
+ORDER BY movie_title;   
 
-
-
---actors.name_actor,
+--SELECT characters.name_character, actors.name_actor
+--FROM characters
+--INNER JOIN actors ON characters_id = characters.id 
