@@ -107,7 +107,3 @@ FROM characters
 INNER JOIN movies ON movies.id = characters.movies_id
 INNER JOIN actors ON actors.characters_id = characters.id
 ORDER BY movie_title;   
-
---SELECT characters.name_character, actors.name_actor
---FROM characters
---INNER JOIN actors ON characters_id = characters.id 
